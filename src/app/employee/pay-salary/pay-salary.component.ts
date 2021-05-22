@@ -85,9 +85,6 @@ export class PaySalaryComponent implements OnInit {
   }
 
   transferAmmount(getVal) {
-    // console.log(getVal.employee.grade.salary);
-    // console.log(this.transactionList.filter(data => data.empAccount && data.empAccount.id == getVal.id).map(data1 => data1.drAmount).reduce((data2, data3) => { return data2 + data3 }, 0));
-    // console.log('list ====== > ',this.transactionList.filter(data => data.empAccount && (data.empAccount.id == getVal.id)));
     this.transferAmm = getVal.employee.grade.salary - this.transactionList.filter(data => data.empAccount && (data.empAccount.id == getVal.id)).map(data1 => data1.drAmount).reduce((data2, data3) => { return data2 + data3 }, 0);
     return this.transferAmm;
   }
@@ -106,7 +103,7 @@ export class PaySalaryComponent implements OnInit {
     const initialState = {
       data: { ...getVal },
       companyAcc: this.conpanyAccList[0],
-      transferAmm: this.transferAmm,
+      transferAmm: getVal.employee.grade.salary - this.transactionList.filter(data => data.empAccount && (data.empAccount.id == getVal.id)).map(data1 => data1.drAmount).reduce((data2, data3) => { return data2 + data3 }, 0),
       currentComBalance: this.currentComBalance
     }
     this.bsModalRef = this._modalService.show(TransferModalComponent, { class: 'modal-md', initialState, backdrop: 'static' });

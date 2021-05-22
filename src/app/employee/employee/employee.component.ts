@@ -104,8 +104,6 @@ export class EmployeeComponent implements OnInit {
 
 
   deleteEmp(emp) {
-    console.log('emp', emp.id);
-
     this.employeeService.deleteEmployee(emp.id).subscribe(
       res => {
         if (res.success) {

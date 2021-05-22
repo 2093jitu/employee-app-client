@@ -7,14 +7,14 @@
                 <form (ngSubmit)="f.form.valid && saveOrUpdate()" name="form" #f="ngForm" novalidate>
                     <div class="form-row">
                         <div class="col-md-4">
-                            <label for="employee">Employee</label>
+                            <label for="employee">Employee <span style="color: red;">*</span></label>
                             <select class="form-control" [(ngModel)]="empAccModel.employee.id"
                                 (change)="changeAccType($event)" name="employee" id="employee">
                                 <option value="{{emp.id}}" *ngFor="let emp of empList">{{emp.empName}}</option>
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <label for="type"> Account Type </label>
+                            <label for="type"> Account Type <span style="color: red;">*</span></label>
                             <select class="form-control" [(ngModel)]="empAccModel.type" (change)="changeAccType($event)"
                                 name="type" id="type">
                                 <option value="Current">Current</option>

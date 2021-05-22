@@ -10,8 +10,9 @@
                         <div class="form-row">
 
                             <div class="col-md-4">
-                                <label for="accType">Account Type</label>
-                                <select class="form-control" name="accType" [(ngModel)]="companyAccountModel.type">
+                                <label for="accType">Account Type<span style="color: red;">*</span></label>
+                                <select class="form-control" name="accType" [(ngModel)]="companyAccountModel.type"
+                                    required>
                                     <option value="Savings">Savings</option>
                                     <option value="Current">Current</option>
                                 </select>
@@ -24,7 +25,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="AccountNumber">Account Number *</label>
+                                <label for="AccountNumber">Account Number <span style="color: red;">*</span></label>
                                 <input type="text" class="form-control" id="AccountNumber" name="AccountNumber"
                                     placeholder="Account Number" required [(ngModel)]="companyAccountModel.accNumber">
                             </div>
@@ -99,9 +100,8 @@
                                 <td style="vertical-align: middle;">{{item.accNumber}}</td>
                                 <td style="vertical-align: middle;">{{item.bankName}}</td>
                                 <td style="vertical-align: middle;">{{item.branchName}}</td>
-                                <td style="width: 110px;" class="text-center">
-                                    <button class="btn btn-info hisotBtn" type="button" (click)="tranHistory()">
-                                        <i class="fas fa-info-circle"></i>
+                                <td style="width: 70px;" class="text-center">
+                                    <button class="btn btn-info btn-his" type="button" (click)="tranHistory()">
                                         History
                                     </button>
                                 </td>

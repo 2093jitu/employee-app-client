@@ -1,17 +1,17 @@
 <div class="modal-content">
     <form class="ng-pristine ng-valid" name="form" #f="ngForm">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Update Basic Salary</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Transfer Salary</h5>
             <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
                 <span aria-hidden="true">&times;</span> </button>
         </div>
         <div class="modal-body">
             <div class="all_content_wrapper heighAuto">
-                <div class="pr-3 mb-3 sal">
+                <div class="ol-md-12 sal">
                     <table class="salTbl">
                         <tbody>
 
-                            <tr>
+                            <tr style="height: 40px;">
                                 <th style="width: 128px;" class="text-right">Employee Account: </th>
                                 <td>
                                     {{data?.accName}}({{data?.accNumber}})
@@ -21,7 +21,15 @@
                             <tr>
                                 <th style="width: 128px;" class="text-right">Transfer Ammount: </th>
                                 <td>
-                                    <input type="number" class="form-control text-right" placeholder="" name="basic" [(ngModel)]="transferAmm">
+                                    <input type="number" 
+                                           class="form-control text-right" 
+                                           placeholder="" 
+                                           name="basic" 
+                                           [(ngModel)]="transferAmm"
+                                           (change)="validationTranAmt()"
+                                           (keyup)="validationTranAmt()"
+                                           (onkeypress)="validationTranAmt()"
+                                           >
                                 </td>
                             </tr>
                         </tbody>

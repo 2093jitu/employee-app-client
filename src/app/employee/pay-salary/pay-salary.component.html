@@ -76,8 +76,8 @@
                             <td>{{transferAmmount(item)}}</td>
                             <td *ngIf="transferAmmount(item)==0" style="color: green;">Paid</td>
                             <td *ngIf="(transferAmmount(item)!=item?.employee?.grade?.salary) && transferAmmount(item)!=0"
-                                style="color: rgb(215, 238, 13);">Partial Payment</td>
-                            <td *ngIf="transferAmmount(item)==item?.employee?.grade?.salary">Not Paid</td>
+                                style="color: rgb(45, 11, 240);">Partial Payment</td>
+                            <td *ngIf="transferAmmount(item)==item?.employee?.grade?.salary" style="color: red;">Not Paid</td>
 
                             <td style="width: 120px;">
                                 <button class="btn btn-primary btn-his" type="button" (click)="balanceTransfer(item)"
