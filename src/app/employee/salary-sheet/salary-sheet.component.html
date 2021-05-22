@@ -1,0 +1,44 @@
+<app-nav></app-nav>
+
+<div class="container-fluid">
+    <div class="pannelArea">
+        <div class="row mr-0">
+            <div class="col-md-12 col-sm-12 ml-2">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr class="text-center">
+                            <th>SL.</th>
+                            <th>Employee ID</th>
+                            <th>Employee Name</th>
+                            <th>Grade</th>
+                            <th>Mobile</th>
+                            <th>Address</th>
+                            <th>Basic Salary</th>
+                            <th>House Rent(20%)</th>
+                            <th>Madical Allowance(15%)</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let emp of employeeList; let i=index ">
+                            <td>{{i+1}}</td>
+                            <td>{{emp.empId}}</td>
+                            <td>{{emp.empName}}</td>
+                            <td>{{emp.grade.name}}</td>
+                            <td>{{emp.mobile}}</td>
+                            <td>{{emp.address}}</td>
+                            <td class="text-right">{{emp.grade.basic}}</td>
+                            <td class="text-right">{{emp.grade.houseRent}}</td>
+                            <td class="text-right">{{emp.grade.medical}}</td>
+                            <td class="text-right">{{emp.grade.salary}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="9" class="text-right">Total Salary</td>
+                            <td class="text-right">{{totalSalary()}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>

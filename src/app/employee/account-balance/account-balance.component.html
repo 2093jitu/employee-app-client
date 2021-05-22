@@ -1,0 +1,54 @@
+<app-nav></app-nav>
+<div class="container-fluid">
+  <div class="pannelArea">
+    <div>
+      <div class="row mr-0">
+
+        <div class="offset-4 col-md-4">
+          <h4 class="text-center">{{conpanyAccList[0]?.bankName}} | {{conpanyAccList[0]?.branchName}} </h4>
+          <h4 class="text-center">{{conpanyAccList[0]?.accName}} | {{conpanyAccList[0]?.accNumber}} </h4>
+          <hr>
+          <h5 class="text-center">Total Paid Salary : {{totalPaid()}}</h5>
+          <h5 class="text-center">Company Current Ammount : {{currentBalance()}}</h5>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row mt-3 mr-0">
+      <div class="col-md-12 col-sm-12 ml-2">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr class="text-center">
+              <th>SL.</th>
+              <th>Employee Info</th>
+              <th>Transaction Description</th>
+              <th>Paid salary</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let item of transactionList; let i=index">
+              <ng-container *ngIf="item.empAccount !=null">
+
+                <tr>
+                  <td>{{i+1}}</td>
+                  <td>{{item?.empAccount?.employee?.empName}} | {{item?.empAccount?.employee?.empId}} |
+                    {{item?.empAccount?.employee?.grade?.name}} </td>
+                  <td>{{item?.des}} </td>
+                  <td class="text-right">{{item.drAmount}}</td>
+                </tr>
+
+              </ng-container>
+            </ng-container>
+            <tr>
+              <td colspan="3" class="text-right">Total Paid</td>
+              <td class="text-right">{{totalPaid()}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

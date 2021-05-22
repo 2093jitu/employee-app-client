@@ -1,0 +1,82 @@
+<app-nav></app-nav>
+
+<div class="container-fluid">
+  <div class="pannelArea">
+    <div class="row mr-2">
+      <div class="col-md-12 col-sm-12 ml-2">
+        <form (ngSubmit)="f.form.valid && saveOrUpdate()" name="form" #f="ngForm" novalidate>
+          <div class="form-row">
+            <div class="col-md-4">
+              <label for="empId">Employee ID<span style="color: red;">*</span></label>
+              <input type="text" class="form-control" id="empId" name="empId" placeholder="Insert ID" required
+                [(ngModel)]="employeeModel.empId">
+            </div>
+            <div class="col-md-4">
+              <label for="empName">Employee Name<span style="color: red;">*</span></label>
+              <input type="text" class="form-control" id="empName" name="empName" placeholder="Insert Name" required
+                [(ngModel)]="employeeModel.empName">
+            </div>
+            <div class="col-md-4">
+              <label for="grade">Grade/Rank</label>
+              <select class="form-control" [(ngModel)]="employeeModel.grade.id" (change)="changeGrade($event)"
+                name="grade">
+                <option value="{{grade.id}}" *ngFor="let grade of gradeList">{{grade.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row mt-2">
+            <div class="col-md-4">
+              <label for="mobile">Mobile</label>
+              <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Ensert Mobile"
+                [(ngModel)]="employeeModel.mobile">
+            </div>
+            <div class="col-md-8">
+              <label for="address">Address</label>
+              <textarea class="form-control text-area-custom" name="address" id="address" name="address" cols="30"
+                rows="3" [(ngModel)]="employeeModel.address"></textarea>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-12 text-right p-0">
+            <button class="btn btn-danger mt-2 mr-2" type="button" (click)="onClickClear()">Clear</button>
+            <button class="btn btn-primary mt-2" type="submit">Save</button>
+        </div> -->
+
+          <div class="col-md-12 text-right p-0">
+            <button class="btn btn-danger mt-2 mr-2" type="button" (click)="onClickClear()">Clear</button>
+            <button class="btn btn-primary mt-2" type="submit">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row mt-3 mr-2">
+      <div class="col-md-12 col-sm-12 ml-2">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th colspan="2" class="text-center">Action</th>
+              <th>Employee ID</th>
+              <th>Employee Name</th>
+              <th>Grade</th>
+              <th>Mobile</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let emp of employeeList; let i=index ">
+              <td class="text-center"><i class="fas fa-edit" (click)="editEmp(emp)"></i></td>
+              <td class="text-center"><i class="fas fa-trash-alt" (click)="deleteEmp(emp)"></i></td>
+              <td>{{emp.empId}}</td>
+              <td>{{emp.empName}}</td>
+              <td>{{emp.grade.name}}</td>
+              <td>{{emp.mobile}}</td>
+              <td>{{emp.address}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

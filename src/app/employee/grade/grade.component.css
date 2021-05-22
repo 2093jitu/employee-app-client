@@ -1,0 +1,31 @@
+.updateBtn{
+    position: absolute;
+    border-color: #fff;
+    box-shadow: 0px 1px 1px #777676;
+    margin-top: -35px;
+    right: -61px;
+    height: 33px;
+}
+.balanceLabel {
+    display: inline-block;
+    position: absolute;
+    left: -82px;
+    margin-top: 5px;
+}
+.hisotBtn{
+    border-radius: 40px;
+    border-color: #fff;
+    box-shadow: 0px 1px 1px #777676;
+    height: 26px;
+    padding-top: 1px;
+}
+
+.saveBtn{
+    border-radius: 40px;
+    border-color: #fff;
+    box-shadow: 0px 1px 1px #777676;
+    margin-top: 6px;
+    right: 24px;
+    height: 35px;
+    margin-bottom: 10px;
+}

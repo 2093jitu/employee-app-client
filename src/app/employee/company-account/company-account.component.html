@@ -1,0 +1,116 @@
+<app-nav></app-nav>
+
+
+<div class="container-fluid">
+    <div class="pannelArea">
+        <div class="row m-0">
+            <div class="col-md-12 col-sm-12 pl-2 pr-2">
+                <ng-container *ngIf="conpanyAccList.length==0">
+                    <form (ngSubmit)="f.form.valid && saveCompanyAcc()" name="form" #f="ngForm" novalidate>
+                        <div class="form-row">
+
+                            <div class="col-md-4">
+                                <label for="accType">Account Type</label>
+                                <select class="form-control" name="accType" [(ngModel)]="companyAccountModel.type">
+                                    <option value="Savings">Savings</option>
+                                    <option value="Current">Current</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="AccountName">Account Name<span style="color: red;">*</span></label>
+                                <input type="text" class="form-control" id="AccountName" name="AccountName"
+                                    placeholder="Account Name" required [(ngModel)]="companyAccountModel.accName">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="AccountNumber">Account Number *</label>
+                                <input type="text" class="form-control" id="AccountNumber" name="AccountNumber"
+                                    placeholder="Account Number" required [(ngModel)]="companyAccountModel.accNumber">
+                            </div>
+                        </div>
+
+                        <div class="form-row mt-2">
+
+                            <div class="col-md-4">
+                                <label for="BankName">Bank Name</label>
+                                <input type="text" class="form-control" id="BankName" name="BankName"
+                                    placeholder="Bank Name" [(ngModel)]="companyAccountModel.bankName">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="BranchName">Branch Name</label>
+                                <input type="text" class="form-control" id="BranchName" name="BranchName"
+                                    placeholder="Branch Name" [(ngModel)]="companyAccountModel.branchName">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="initBlance">Initial Balance</label>
+                                <input type="number" class="form-control" id="initBlance" name="initBlance"
+                                    placeholder="Initial Balance" [(ngModel)]="companyAccountModel.balance">
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 text-right p-0">
+                            <button class="btn btn-primary saveBtn" type="submit">
+                                <i class="fas fa-save"></i>
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </ng-container>
+
+                <ng-container *ngIf="conpanyAccList.length!=0">
+                    <div class="offset-4 col-md-2">
+                        <label for="updBlance" class="balanceLabel">Update Balance:</label>
+                        <input type="number" class="form-control text-right" id="initBlance" name="initBlance"
+                            placeholder="Add Balance" [(ngModel)]="companyAccountModel.balance">
+
+                        <button class="btn btn-primary updateBtn" type="button" (click)="saveCompanyAcc()">
+                            <i class="fas fa-save"></i>
+                            Update
+                        </button>
+
+                        <h5 class="mt-2"><b>Current Balance : </b> <span>{{currentBalance()}}</span></h5>
+
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 mt-1">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Account Type</th>
+                            <th>Account Name</th>
+                            <th>Account Number</th>
+                            <th>Bank Name</th>
+                            <th>Branch Name</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let item of conpanyAccList;let i = 'index'">
+                            <tr>
+                                <td style="vertical-align: middle;">{{item.type}}</td>
+                                <td style="vertical-align: middle;">{{item.accName}}</td>
+                                <td style="vertical-align: middle;">{{item.accNumber}}</td>
+                                <td style="vertical-align: middle;">{{item.bankName}}</td>
+                                <td style="vertical-align: middle;">{{item.branchName}}</td>
+                                <td style="width: 110px;" class="text-center">
+                                    <button class="btn btn-info hisotBtn" type="button" (click)="tranHistory()">
+                                        <i class="fas fa-info-circle"></i>
+                                        History
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

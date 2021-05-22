@@ -1,0 +1,40 @@
+<div class="modal-content">
+    <form class="ng-pristine ng-valid" name="form" #f="ngForm">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Update Basic Salary</h5>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+                <span aria-hidden="true">&times;</span> </button>
+        </div>
+        <div class="modal-body">
+            <div class="all_content_wrapper heighAuto">
+                <div class="pr-3 mb-3 sal">
+                    <table class="salTbl">
+                        <tbody>
+
+                            <tr>
+                                <th style="width: 128px;" class="text-right">Employee Account: </th>
+                                <td>
+                                    {{data?.accName}}({{data?.accNumber}})
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th style="width: 128px;" class="text-right">Transfer Ammount: </th>
+                                <td>
+                                    <input type="number" class="form-control text-right" placeholder="" name="basic" [(ngModel)]="transferAmm">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer mt-1">
+            <button class="btn btn-primary" type="button" (click)="saveTransaction()">
+                <i class="fas fa-save"></i>
+                Transfer
+            </button>
+            <button class="btn btn-danger" type="button" aria-label="Close" (click)="bsModalRef.hide()">Cancel</button>
+        </div>
+    </form>
+</div>

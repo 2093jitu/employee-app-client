@@ -1,0 +1,60 @@
+<app-nav></app-nav>
+<div class="container-fluid">
+    <div class="pannelArea">
+        <div class="row border-bottom mb-3 m-0 pb-3 pt-2">
+            <div class="col-md-12">
+                <ng-container *ngIf="gradeList.length==0">
+
+                    <div class="offset-5 col-md-2">
+                        <label for="updBlance" class="balanceLabel">Basic Salary:</label>
+                        <input type="number" class="form-control text-right" placeholder=""
+                            [(ngModel)]="gradeModel.basic" placeholder="Add Basic Salary" name="basic">
+
+                        <button class="btn btn-primary updateBtn" type="button" (click)="saveGrade()">
+                            <i class="fas fa-save"></i>
+                            Add
+                        </button>
+                    </div>
+
+
+
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <Table class="table table-bordered table-striped">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Action</th>
+                            <th>Grade/Rank Name</th>
+                            <th>Maximum Post</th>
+                            <th>Basic Salary</th>
+                            <th>House Rent(20%)</th>
+                            <th>Medical Allowance(15%)</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let item of gradeList; let i = 'index'">
+                            <tr class="text-center">
+                                <td (click)="updateGrade(item)" *ngIf="i==0"><i class="fas fa-edit"></i></td>
+                                <td *ngIf="i!=0"></td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.maxPost}}</td>
+                                <td>{{item.basic}}</td>
+                                <td>{{item.houseRent}}</td>
+                                <td>{{item.medical}}</td>
+                                <td>{{item.salary}}</td>
+                            </tr>
+                        </ng-container>
+
+                    </tbody>
+
+                </Table>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

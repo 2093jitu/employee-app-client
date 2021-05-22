@@ -1,0 +1,123 @@
+<app-nav></app-nav>
+
+<div class="container-fluid">
+    <div class="pannelArea">
+        <!-- <div class="row mr-2">
+        <div class="col-md-12 col-sm-12 ml-2">
+            <form (ngSubmit)="f.form.valid && saveOrUpdate()" name="form" #f="ngForm" novalidate>
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <label for="employee">Employee</label>
+                        <select class="form-control" [(ngModel)]="empAccModel.employee.id"
+                            (change)="changeAccType($event)" name="employee" id="employee">
+                            <option value="{{emp.id}}" *ngFor="let emp of empList">{{emp.empName}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="type"> Account Type </label>
+                        <select class="form-control" [(ngModel)]="empAccModel.type" (change)="changeAccType($event)"
+                            name="type" id="type">
+                            <option value="Current">Current</option>
+                            <option value="Saving">Saving</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="accoutName">Account Name<span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" id="accoutName" name="accoutName"
+                            placeholder="Insert Account Name" required [(ngModel)]="empAccModel.accName">
+                    </div>
+                </div>
+                <div class="form-row mt-2">
+                    <div class="col-md-4">
+                        <label for="accoutNum">Account Number<span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" id="accoutNum" name="accoutNum"
+                            placeholder="Insert Account Number" required [(ngModel)]="empAccModel.accNumber">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="bnakN">Bank Name</label>
+                        <input type="text" class="form-control" id="bnakN" name="bnakN" placeholder="Ensert Bank Name"
+                            [(ngModel)]="empAccModel.bankName">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="branchN">Branch Name</label>
+                        <input type="text" class="form-control" id="branchN" name="branchN"
+                            placeholder="Ensert Branch Name" [(ngModel)]="empAccModel.branchName">
+                    </div>
+                </div>
+                <button class="btn btn-info mt-2 mr-2" type="button" (click)="onClickClear()">Clear</button>
+                <button class="btn btn-primary mt-2" type="submit">Save</button>
+            </form>
+        </div> -->
+
+
+        <div class="row mr-0">
+            <div class="col-md-12 col-sm-12 ml-2">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Bank Account</th>
+                            <th>Bank Name</th>
+                            <th>Grade</th>
+                            <th>Salary</th>
+                            <th>Transfer Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of employeeAccList; let i=index ">
+                            <td>{{item?.employee?.empName}} ({{item?.employee?.empId}})</td>
+                            <td>{{item?.accName}}({{item?.accNumber}})</td>
+                            <td>{{item?.bankName}}({{item?.branchName}})</td>
+                            <td>{{item?.employee.grade?.name}}</td>
+                            <td>{{item?.employee?.grade?.salary}}</td>
+                            <td>{{transferAmmount(item)}}</td>
+                            <td *ngIf="transferAmmount(item)==0" style="color: green;">Paid</td>
+                            <td *ngIf="(transferAmmount(item)!=item?.employee?.grade?.salary) && transferAmmount(item)!=0"
+                                style="color: rgb(215, 238, 13);">Partial Payment</td>
+                            <td *ngIf="transferAmmount(item)==item?.employee?.grade?.salary">Not Paid</td>
+
+                            <td style="width: 120px;">
+                                <button class="btn btn-primary btn-his" type="button" (click)="balanceTransfer(item)"
+                                    [disabled]="transferAmmount(item)==0">
+                                    Pay Ammount
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row mt-3 mr-0">
+            <div class="col-md-12 col-sm-12 ml-2">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Acc Info.</th>
+                            <th>Total Dr. Ammount</th>
+                            <th>Total Cr. Ammount</th>
+                            <th>Current Balance</th>
+                            <th style="width: 70px;">
+                                <button class="btn btn-info btn-his" type="button" (click)="tranHistory()">
+                                    History
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of conpanyAccList; let i=index ">
+                            <td>{{item.accName}} || {{item.accNumber}}</td>
+                            <td>{{totalDrAmmount()}}</td>
+                            <td>{{totalCrAmmount()}}</td>
+                            <td>{{currentBalance()}}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
