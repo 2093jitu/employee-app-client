@@ -63,11 +63,11 @@
                             <span class="info-box-icon push-bottom"><i class="fas fa-building"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">Company Account</span>
-                                <span class="info-box-number">Setup Com. Account</span>
+                                <span class="info-box-number">Cr- {{totalCrAmmount()}} | Dr- {{totalDrAmmount()}}</span>
                                 <div class="progress">
                                 </div>
                                 <span class="progress-description">
-                                    Account Information
+                                    Com.Cur.Bal. {{currentBalance()}}
                                 </span>
                             </div>
                         </div>
@@ -81,11 +81,11 @@
                             <span class="info-box-icon push-bottom"><i class="far fa-credit-card"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">Pay Salary</span>
-                                <span class="info-box-number">Pay Employee Salary</span>
+                                <span class="info-box-number">Remain Transfer Amm.</span>
                                 <div class="progress">
                                 </div>
                                 <span class="progress-description">
-                                    View Tran. History
+                                   Need 2 Tran. {{needToTransfer()}} Tk.
                                 </span>
                             </div>
                         </div>
@@ -98,11 +98,11 @@
                             <span class="info-box-icon push-bottom"><i class="fas fa-stream"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">Salary Sheet</span>
-                                <span class="info-box-number">Display Salary Sheet</span>
+                                <span class="info-box-number">Total Emp. {{employeeList.length}}</span>
                                 <div class="progress">
                                 </div>
                                 <span class="progress-description">
-                                    Print Salary Sheet
+                                   Total Sal. {{totalSalary()}}
                                 </span>
                             </div>
                         </div>
@@ -115,11 +115,11 @@
                             <span class="info-box-icon push-bottom"><i class="fas fa-sort-amount-up"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">Account Balance</span>
-                                <span class="info-box-number">Display Acc. Balance</span>
+                                <span class="info-box-number">Total Pay Sal. {{totalPaid()}}</span>
                                 <div class="progress">
                                 </div>
                                 <span class="progress-description">
-                                    Print Account Balance
+                                    Com.Cur.Bal. {{currentBalance()}}
                                 </span>
                             </div>
                         </div>
